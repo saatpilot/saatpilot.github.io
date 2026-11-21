@@ -19,7 +19,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"SaatPilot Gartenblog","url":"https://saatpilot.github.io/","inLanguage":"de-DE","publisher":{"@type":"Organization","name":"SaatPilot","url":"https://www.saatpilot.de/"},"author":{"@type":"Person","name":"Steffen Bauer","url":"https://steffenbauer.com/"}}</script>
 </head>
 <body>
-  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="#start">SaatPilot<small>Gartenblog</small></a><nav class="nav" aria-label="Hauptnavigation"><a href="#beitraege">Beiträge</a><a href="#someposter-beitraege">Neue Posts</a><a href="#ueber-uns">Über uns</a><a href="#profile">Unsere Profile</a><a class="shop-link" href="https://www.saatpilot.de/shop/">Zum Shop ↗</a></nav></div></header>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="#start">SaatPilot<small>Gartenblog</small></a><nav class="nav" aria-label="Hauptnavigation"><a href="#beitraege">Beiträge</a><a id="someposter-nav" href="#someposter-beitraege" hidden>Neue Posts</a><a href="#ueber-uns">Über uns</a><a href="#profile">Unsere Profile</a><a class="shop-link" href="https://www.saatpilot.de/shop/">Zum Shop ↗</a></nav></div></header>
   <main id="start">
     <section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">Aussaat · Pflanzen · Saatgutwissen</span><h1>Aus kleinen Samen werden große Geschichten.</h1><p class="lead">Willkommen im SaatPilot Gartenblog. Hier entdecken wir besondere Pflanzen, erklären die Aussaat und begleiten den Weg vom Samenkorn bis zur nächsten Ernte.</p><div class="actions"><a class="button" href="#beitraege">Beiträge lesen</a><a class="button outline" href="https://www.saatpilot.de/">SaatPilot entdecken ↗</a></div></div><div class="hero-figure"><img src="https://www.saatpilot.de/saatpilot-theme/assets/saatpilot-original.png" alt="Botanische SaatPilot-Illustration mit Ahornsamen und Ahornblatt" width="600" height="600"></div></div></section>
     <section id="someposter-beitraege" class="section wrap" hidden aria-live="polite"><div class="section-heading"><div><span class="eyebrow">Direkt aus SomePoster</span><h2>Weitere Blogbeiträge.</h2></div><p>Neue Artikel, die über SomePoster auf GitHub Pages veröffentlicht wurden.</p></div><div class="cards" id="someposter-liste"></div></section>
@@ -80,7 +80,7 @@
         article.append(body);
         list.append(article);
       }
-      if (list.childElementCount) section.hidden = false;
+      if (list.childElementCount) { section.hidden = false; document.getElementById('someposter-nav').hidden = false; }
     } catch { /* Keep the original articles visible if GitHub is temporarily unavailable. */ }
   })();
   </script>
