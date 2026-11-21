@@ -47,14 +47,14 @@
       if (!response.ok) return;
       const entries = await response.json();
       if (!Array.isArray(entries)) return;
-      const files = entries.filter(file => file.type === 'file' && /^[a-z0-9][a-z0-9._-]*\\.html?$/i.test(file.name)).slice(-24).reverse();
+      const files = entries.filter(file => file.type === 'file' && /^[a-z0-9][a-z0-9._-]*\.html?$/i.test(file.name)).slice(-24).reverse();
       const pages = await Promise.all(files.map(async file => {
         const url = new URL('posts/' + encodeURIComponent(file.name), location.origin + '/');
         try {
           const result = await fetch(url);
           if (!result.ok) return null;
           const documentForPost = new DOMParser().parseFromString(await result.text(), 'text/html');
-          return {url: url.href, title: documentForPost.querySelector('title')?.textContent?.trim() || file.name.replace(/\\.html?$/i, '').replace(/[-_]/g, ' '), description: documentForPost.querySelector('meta[name="description"]')?.content?.trim() || 'Ein weiterer Beitrag aus dem SaatPilot Gartenblog.'};
+          return {url: url.href, title: documentForPost.querySelector('title')?.textContent?.trim() || file.name.replace(/\.html?$/i, '').replace(/[-_]/g, ' '), description: documentForPost.querySelector('meta[name="description"]')?.content?.trim() || 'Ein weiterer Beitrag aus dem SaatPilot Gartenblog.'};
         } catch { return null; }
       }));
       for (const page of pages.filter(Boolean)) {
